@@ -12,14 +12,24 @@
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   <version.org.jboss.bom.brms>6.3.0.GA-redhat-3</version.org.jboss.bom.brms>
   <version.org.jboss.integration-platform>6.0.6.Final-redhat-1</version.org.jboss.integration-platform>
+  <jbpm.version>6.5.0.Final</jbpm.version>
  </properties>
 
  <dependencyManagement>
   <dependencies>
 
+	<dependency>
+		<groupId>org.jbpm</groupId>
+		<artifactId>jbpm-bom</artifactId>
+		<version>${jbpm.version}</version>
+		<scope>import</scope>
+		<type>pom</type>
+	</dependency>
+
    <!-- You may use this bom instead of below 2 boms if you want 3rd version 
     libraries to fully align to business-central/kie-server versions. See discussion 
     in https://issues.jboss.org/browse/RHBRMS-2094 -->
+    <!-- 
    <dependency>
     <groupId>org.jboss.bom.brms</groupId>
     <artifactId>jboss-brms-bpmsuite-platform-bom</artifactId>
@@ -27,6 +37,7 @@
     <version>${version.org.jboss.bom.brms}</version>
     <scope>import</scope>
    </dependency>
+    -->
 
    <!-- <dependency> -->
    <!-- <groupId>org.jboss.bom.brms</groupId> -->
@@ -49,19 +60,26 @@
  </dependencyManagement>
 
  <dependencies>
-  <!-- Java EE dependencies -->
-  <dependency>
-   <groupId>javax.servlet</groupId>
-   <artifactId>servlet-api</artifactId>
-   <version>2.5</version>
-   <scope>provided</scope>
-  </dependency>
+	<!-- Java EE dependencies -->
+	<dependency>
+	 <groupId>javax.servlet</groupId>
+	 <artifactId>servlet-api</artifactId>
+	 <version>2.5</version>
+	 <scope>provided</scope>
+	</dependency>
 
     <dependency>
       <groupId>org.kie.server</groupId>
       <artifactId>kie-server-client</artifactId>
     </dependency>
 
+	<dependency>
+	    <groupId>npou</groupId>
+	    <artifactId>npproj42</artifactId>
+	    <version>1.0</version>
+	    <scope>system</scope>
+	    <systemPath>${project.basedir}/src/main/resources/npproj42-1.0.jar</systemPath>
+	</dependency>
  </dependencies>
 
  <repositories>
